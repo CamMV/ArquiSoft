@@ -1,6 +1,9 @@
+from django.contrib import admin
 from django.urls import path
-from .views import obtener_reporte
+from . import views
+
 
 urlpatterns = [
-    path('<int:resultado_id>/reporte/', obtener_reporte, name='obtener_reporte'),
+    path('', views.resultadosView, name = 'resultados view'),
+    path('<int:pk>/', views.resultadoView, name = 'resultado view'),
 ]
