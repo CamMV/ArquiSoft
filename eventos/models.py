@@ -20,9 +20,3 @@ class Evento(models.Model):
 
     def __str__(self):
         return f"Paciente: {paciente}, Evento: {self.tipo}, Descripción: {self.descripcion}, Fecha: {self.fecha}, Diagnóstico: {self.diagnostico}"
-
-    def save(self, *args, **kwargs):
-        if self.tipo == 'MUESTRA_DE_SANGRE':
-            self.descripcion = "Procedimiento en el que se extrae una pequeña cantidad de sangre del paciente para su análisis en un laboratorio, con el objetivo de diagnosticar enfermedades, evaluar el estado de salud o monitorear un tratamiento."
-        elif self.tipo == 'PRESCRIPCION_dE_MEDICAMENTO':
-            pass

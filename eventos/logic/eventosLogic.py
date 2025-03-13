@@ -1,10 +1,11 @@
 from models import Evento
 
 def getEventos():
-    eventos = Evento.objects.all()
+    eventos = Evento.objects.all().order_by('-dateTime')[:10]
     return eventos
 
-def getEvento(evento_pk):
-    evento = Evento.objects.get(pk=evento_pk)
-    return evento
-
+def createEvento(form):
+    evento = form.save()
+    evento.save()
+    return ()
+    
