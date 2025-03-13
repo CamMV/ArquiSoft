@@ -1,4 +1,3 @@
-from django.db import models
 from imagenes.models import Imagenes
 
 def getImagenes():
