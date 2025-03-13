@@ -3,6 +3,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('diagnosticos/', views.diagnosticoList),
-    path('diagnosticoCreate/', csrf_exempt(views.diagnostico_create), name = 'diagnosticoCreate')
+    path('', views.diagnosticosView, name = 'diagnosticos view'),
+    path('<int:pk>/', views.diagnosticoView, name = 'diagnostico view'),
     ]
+
+
