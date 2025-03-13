@@ -10,9 +10,9 @@ def getResultado(res_pk):
 
 def updateResultado(res_pk, new_res):
     resultado = getResultado(res_pk)
-    resultado["nombre"] = new_res["nombre"]
-    resultado["fecha"] = new_res["fecha"]
-    resultado["paciente"] = new_res["paciente"]
+    resultado["contenido"] = new_res["contenido"]
+    resultado["fecha_generacion"] = new_res["fecha_generacion"]
+    resultado["recomendaciones"] = new_res["recomendaciones"]
     resultado.save()
     return resultado
 
