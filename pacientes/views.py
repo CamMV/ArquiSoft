@@ -23,6 +23,7 @@ def pacientesView(request):
         paciente = serializers.serialize('json', [paciente_dto,])
         return HttpResponse(paciente, 'application/json')
     
+    
 
 @csrf_exempt
 def pacienteView(request, pk):
