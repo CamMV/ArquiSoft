@@ -16,6 +16,6 @@ def updateResultado(res_pk, new_res):
     resultado.save()
     return resultado
 
-def createResultado(name, date, patient):
-    resultado = Resultado.objects.create(nombre=name, fecha=date, paciente=patient)
+def createResultado():
+    resultado = Resultado.objects.create()
     return resultado

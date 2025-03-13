@@ -1,38 +1,23 @@
 from django.db import models
-
-
-from django.utils.timezone import now
-
-
-from pacientes.models import Paciente
-from diagnosticos.models import Diagnostico
-from eventos.models import Evento
-
-from django.db.models import Prefetch
+import random
+from resultados.models import Resultado
 
 class Resultado(models.Model):
-
-    
-    contenido = models.TextField()
+    valor = models.IntegerField(default==True, null=True)  
     recomendaciones = models.TextField(blank=True, null=True)
     fecha_generacion = models.DateTimeField(auto_now_add=True)
 
+    def save(self, *args, **kwargs):
+        
+        if self.valor is None:  
+            self.valor = random.randint(1, 100)
+            
+        if self.valor < 50:
+            self.recomendaciones = "El valor del resultado es menor a 50"
+        else:
+            self.recomendaciones = "El valor del resultado es mayor o igual a 50"
+        
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return f"Resultado: {self.contenido}, Recomendaciones: {self.recomendaciones}  ,Fecha de generacion: {self.fecha_generacion}"
-
-
-
-#Guardado en base de datos
-"""  def save(self, *args, **kwargs):
-
-
-        super().save(*args, **kwargs)  
-
-        Evento.objects.create(
-
-            paciente=self.paciente,
-            tipo='INFORME_FINAL',
-            descripcion=f"Se generó un informe final para {self.paciente.nombre}."
-        )
-   """
-   
+        return f"Recomendaciones: {self.recomendaciones}, Fecha de generación: {self.fecha_generacion}, Valor del resultado: {self.valor}"
