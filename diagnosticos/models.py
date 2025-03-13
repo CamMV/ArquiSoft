@@ -13,8 +13,6 @@ class Diagnostico(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     conteindo = models.TextField()
     
-    objects = models.Manager()
-    
     def valor_resultado(self):
         return self.resultado.valor > 50
 #inyectamos imagenes y resultados

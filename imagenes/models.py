@@ -23,6 +23,6 @@ class Imagenes(models.Model):
     nombre = models.CharField(max_length=255)
     descripcion = models.TextField()
     imagen = models.ImageField(upload_to='images/')
-    objects = models.Manager()  
+ 
     def __str__(self):
         return f"{self.nombre}, {self.descripcion}"
