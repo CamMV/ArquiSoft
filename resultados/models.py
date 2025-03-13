@@ -1,6 +1,6 @@
 from django.db import models
 import random
-from resultados.models import Resultado
+
 
 class Resultado(models.Model):
     valor = models.IntegerField(default==True, null=True)  
