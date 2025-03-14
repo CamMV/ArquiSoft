@@ -1,7 +1,7 @@
 from django import forms
 from .models import Evento
 
-class EventoForm(form.ModelForm):
+class EventoForm(forms.ModelForm):
     class Meta:
         model = Evento
         fields = [
