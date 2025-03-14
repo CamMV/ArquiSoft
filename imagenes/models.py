@@ -21,7 +21,7 @@ class miRNA(models.Model):
     
 class Imagenes(models.Model):
     nombre = models.CharField(max_length=255)
-    descripcion = models.TextField()
+    descripcion = models.CharField(max_length=250)
     imagen = models.ImageField(upload_to='images/')
  
     def __str__(self):

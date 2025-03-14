@@ -11,7 +11,7 @@ class Diagnostico(models.Model):
     mirna = models.ForeignKey(miRNA, on_delete=models.SET_NULL, null=True, blank=True)
     resultado = models.ForeignKey(Resultado, on_delete=models.SET_NULL, null=True, blank=True)
     fecha = models.DateTimeField(auto_now_add=True)
-    conteindo = models.TextField()
+    contenido = models.CharField(max_length=250)
     
     def valor_resultado(self):
         return self.resultado.valor > 50
