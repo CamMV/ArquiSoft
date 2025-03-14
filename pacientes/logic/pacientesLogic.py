@@ -1,7 +1,7 @@
 from ..models import Paciente
 
 def getPacientes():
-    pacientes = Paciete.objects.all()
+    pacientes = Paciente.objects.all()
     return pacientes
 
 def getPaciente(pac_pk):
