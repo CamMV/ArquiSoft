@@ -13,7 +13,7 @@ class MRI(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
 
 
-class miRNA(models.Model):
+class mRNA(models.Model):
     
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     resultados = models.JSONField()

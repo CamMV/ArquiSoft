@@ -22,12 +22,12 @@ def updateDiagnostico(diagnostico_pk, new_diagnostico):
     diagnostico["contenido"] = new_diagnostico["contenido"]
     return diagnostico
 
-def createDiagnostico(imagen, eeg, mri, mrina, resultado):
+def createDiagnostico(imagen, eeg, mri, mrna, resultado):
     fecha_creacion = timezone.now()
-    if Diagnostico.valor_resultado(resultado):
+    if resultado.valor:
         contenido = str(fecha_creacion) + " " + "Es poco probable que el paciente tenga Epilepsia"
     else:
         contenido = str(fecha_creacion) + " " + "Es probable que el paciente tenga Epilepsia"
-    diagnostico = Diagnostico.objects.create(imagen=imagen, eeg=eeg, mri=mri, mrina=mrina, resultado=resultado, fecha=fecha_creacion, contenido=contenido)
+    diagnostico = Diagnostico.objects.create(imagen=imagen, eeg=eeg, mri=mri, mrna=mrna, resultado=resultado, fecha=fecha_creacion, contenido=contenido)
     return diagnostico
     
