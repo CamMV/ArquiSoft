@@ -1,4 +1,4 @@
-from models import Resultado
+from ..models import Resultado
 import random
 from django.db import models as md
 from django.utils import timezone

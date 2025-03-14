@@ -1,4 +1,4 @@
-from models import Paciente
+from ..models import Paciente
 
 def getPacientes():
     pacientes = Paciete.objects.all()

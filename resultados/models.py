@@ -1,7 +1,5 @@
 from django.db import models
 
-
-
 class Resultado(models.Model):
     valor = models.IntegerField(default=True, null=False)  
     recomendaciones = models.TextField(blank=True, null=True)

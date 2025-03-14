@@ -2,6 +2,7 @@ from diagnosticos.models import Diagnostico
 from django.db import models
 from django.utils import timezone
 
+
 def getDiagnosticos():
     diagnosticos = Diagnostico.objects.all()
     return diagnosticos
