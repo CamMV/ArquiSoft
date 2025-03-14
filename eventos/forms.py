@@ -1,23 +1,27 @@
 from django import forms
 from .models import Evento
+from .models import Paciente
 
 class EventoForm(forms.ModelForm):
-    paciente = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    diagnostico = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    paciente = forms.ModelChoiceField(
+        queryset=Paciente.objects.all(),  # Lista de pacientes en el sistema
+        empty_label="Seleccione un paciente",
+        widget=forms.Select(attrs={'class': 'form-control'})  # Opcional: estilos CSS
+    )
+    
     class Meta:
         model = Evento
         fields = [
             'paciente',
-            'diagnostico',
             'tipo',
-            'descripcion',
+            'descripcion',        
             #'fecha'
         ]
-        
+        exclude = ['diagnostico']
+
         labels = {
             'paciente': "Paciente",
             'tipo': "Tipo",
-            'diagnostico': "Diagnostico",
             'descripcion': "Descripcion"
             #'fecha' : "Fecha",
         }

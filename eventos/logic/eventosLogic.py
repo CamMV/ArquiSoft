@@ -6,7 +6,8 @@ def getEventos():
     return eventos
 
 def createEvento(form):
-    evento = form.save()
-    evento.save()
-    return ()
-    
+    if form is None:
+        return ()
+    else:
+        form.save()
+        return ()

@@ -7,14 +7,14 @@
             <h4 class="page-title">Eventos</h4>
             <div style="text-align:right;">
                 <button type="button" class="btn btn-success waves-effect waves-light"
-                        onClick=" window.location.href='/eventos/eventocreate' " style="text-align:center;">+
+                        onClick=" window.location.href='/eventos/eventoCreate' " style="text-align:center;">+
                 </button>
             </div>
         </div>
     </div>
 
     <br>
-    <!--
+
     <div class="page-content-wrapper">
         <div class="container">
             <div class="panel panel-default">
@@ -23,14 +23,14 @@
                     <table class="table table-hover">
                         <thead>
                         <tr style="color:#0E2EB0">
-                            <th>Variable</th>
+                            <th>Eventos</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        {% for variable in variable_list %}
+                        {% for evento in eventos_list %}
                         <tr>
-                            <td>{{ variable.name }}</td>
+                            <td>{{ evento.name }}</td>
                         </tr>
                         {% endfor %}
 
@@ -46,10 +46,10 @@
 
                 </div>
             </div>
-        
+
         </div>
     </div>
-    -->
-    
+
+
 </div>
 {% endblock %}

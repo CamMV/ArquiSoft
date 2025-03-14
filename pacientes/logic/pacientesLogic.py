@@ -16,7 +16,8 @@ def updatePciente(pac_pk, new_pac):
     paciente.save()
     return paciente
 
-def createPaciente(name, age, hc):
-    paciente = Paciente.objects.create(nombre=name, edad=age, historia_cljson=hc)
-    return paciente
+def createPaciente(form):
+    paciente = form.save()
+    paciente.save()
+    return ()
 
