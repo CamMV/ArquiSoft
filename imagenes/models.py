@@ -16,7 +16,6 @@ class MRI(models.Model):
 class mRNA(models.Model):
     
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
-    resultados = models.JSONField()
     fecha = models.DateTimeField(auto_now_add=True)
     
 class Imagenes(models.Model):
