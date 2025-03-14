@@ -24,10 +24,7 @@ def updateDiagnostico(diagnostico_pk, new_diagnostico):
 
 def createDiagnostico(imagen, eeg, mri, mrina, resultado):
     fecha_creacion = models.DateTimeField(default=timezone.now)
-    if Diagnostico.valor_resultado(resultado):
-        contenido = fecha_creacion + " " + "Es poco probable que el paciente tenga Epilepsia"
-    else:
-        contenido = fecha_creacion + " " + "Es probable que el paciente tenga Epilepsia"
-    diagnostico = Diagnostico.objects.create(imagen=imagen, eeg=eeg, mri=mri, mrina=mrina, resultado=resultado, fecha=fecha_creacion, contenido=contenido)
+
+    diagnostico = Diagnostico.objects.create(imagen=imagen, eeg=eeg, mri=mri, mrina=mrina, resultado=resultado, fecha=fecha_creacion)
     return diagnostico
     
