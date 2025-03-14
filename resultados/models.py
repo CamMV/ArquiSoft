@@ -1,7 +1,7 @@
 from django.db import models
 
 class Resultado(models.Model):
-    valor = models.CharField(max_length=50)
+    valor = models.IntegerField(default=0)
     recomendaciones = models.CharField(max_length=250)
     fecha_generacion = models.DateTimeField(auto_now_add=True)
 
