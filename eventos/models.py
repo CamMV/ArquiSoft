@@ -5,8 +5,8 @@ from diagnosticos.models import Diagnostico
 
 class Evento(models.Model):
 
-    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, null=True, blank=True)
-    diagnostico = models.ForeignKey(Diagnostico, on_delete=models.CASCADE, null=True, blank=True)
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, blank=True, default=None)
+    diagnostico = models.ForeignKey(Diagnostico, on_delete=models.CASCADE,  blank=True,default=None)
     tipo = models.CharField(max_length=50, choices=[
         ('MUESTRA_DE_SANGRE', 'Muestra de sangre'),
         ('PRESCRIPCION_dE_MEDICAMENTO', 'Prescripcion de medicamento'),
@@ -15,8 +15,8 @@ class Evento(models.Model):
         ('CIRUGIAL', 'Cirugia'),
         ('CITA_MEDICA', 'Cita medica'),
     ])
-    descripcion = models.TextField()
+    descripcion = models.CharField(max_length=50)
     fecha = models.DateTimeField(default = timezone.now)
 
     def __str__(self):
-        return f"Paciente: {paciente}, Evento: {self.tipo}, Descripción: {self.descripcion}, Fecha: {self.fecha}, Diagnóstico: {self.diagnostico}"
+        return f"Paciente: {self.paciente}, Evento: {self.tipo}, Descripción: {self.descripcion}, Fecha: {self.fecha}, Diagnóstico: {self.diagnostico}"
