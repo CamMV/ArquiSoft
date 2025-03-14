@@ -32,5 +32,7 @@ def paciente_create(request):
 
 def pacienteInfo(request):
     if request.method == "GET":
-        return JsonResponse({"mensaje": "El paciente es altamente probable de padecer epilepsia"})
+        return JsonResponse({"mensaje": "El paciente es altamente probable de padecer epilepsia",
+                             "Resultados": "EEG: Ondas epileptiformes en region temporal izquierda",
+                             "Recomendaciones": "Realizar resonancia magnetica para descartar lesiones en el cerebro"})
     return JsonResponse ({"error": "Metodo no permitido"}, status=405)

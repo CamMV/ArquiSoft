@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Info paciente </h2>
-<t> Probabilidad de que el paciente tenga Epilepsia: 60%</t>
+<form method="GET">
+    <br>
+    <label for="name">Nombre</label>
+    <input type="text" id="name" name="name" value="{{ paciente.name }}" readonly>
+    <br>
+</form>
 {% endblock %}
