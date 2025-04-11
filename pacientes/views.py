@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.urls import reverse
 from .forms import PacienteForm
-from .logic.pacientesLogic import createPaciente, getPacientes
+from .logic.pacientesLogic import createPaciente, getPacientes, getPaciente
 
 
 def pacienteList(request):
@@ -13,6 +13,13 @@ def pacienteList(request):
         'paciente_list' : paciente
     }
     return render(request, 'Paciente/pacientes.html', context)
+
+def paciente_detail (request, paciente_id):
+    paciente = getPaciente(paciente_id)
+    context = {
+        'paciente': paciente
+    }
+    return render(request, 'Paciente/pacienteDetail.html', context)
 
 def paciente_create(request):
     if request.method == 'POST':

@@ -31,7 +31,9 @@
 
                         {% for paciente in paciente_list %}
                         <tr>
-                            <td>{{ paciente.nombre }}</td>
+                            <a href="{% url 'pacienteDetail' paciente.id %}">
+                                {{ paciente.nombre }}
+                            </a>
                         </tr>
                         {% endfor %}
 
@@ -49,6 +51,7 @@
             </div>
         </div>
     </div>
+
     <div style="text-align:center;">
         <button type="button" class="btn btn-primary waves-effect waves-light"
                 onClick=" window.location.href='/pacientes/info' ">

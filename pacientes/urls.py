@@ -6,5 +6,7 @@ from . import views
 urlpatterns = [
     path('', views.pacienteList, name = 'pacienteList'),
     path('pacientecreate/', csrf_exempt(views.paciente_create), name = 'pacienteCreate'),
-    path('info/', csrf_exempt(views.pacienteInfo),name = 'pacienteInfo')
+    path('info/', csrf_exempt(views.pacienteInfo),name = 'pacienteInfo'),
+    path('<int:paciente_id>/', views.paciente_detail, name='pacienteDetail'),
+
 ]
