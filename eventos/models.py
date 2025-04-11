@@ -1,12 +1,10 @@
 from django.db import models
 from django.utils import timezone
 from pacientes.models import Paciente
-from diagnosticos.models import Diagnostico
 
 class Evento(models.Model):
 
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, blank=True, default=None)
-    diagnostico = models.ForeignKey(Diagnostico, on_delete=models.CASCADE,  blank=True,null=True,default=None)
     tipo = models.CharField(max_length=50, choices=[
         ('MUESTRA_DE_SANGRE', 'Muestra de sangre'),
         ('PRESCRIPCION_dE_MEDICAMENTO', 'Prescripcion de medicamento'),
@@ -19,4 +17,4 @@ class Evento(models.Model):
     fecha = models.DateTimeField(default = timezone.now)
 
     def __str__(self):
-        return f"Paciente: {self.paciente}, Evento: {self.tipo}, Descripción: {self.descripcion}, Fecha: {self.fecha}, Diagnóstico: {self.diagnostico}"
+        return f"Paciente: {self.paciente}, Evento: {self.tipo}, Descripción: {self.descripcion}, Fecha: {self.fecha}"
