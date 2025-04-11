@@ -9,7 +9,7 @@ from .logic.eventosLogic import createEvento, getEventos
 def eventoList(request):
     eventos = getEventos()
     context = {
-        'evento_list' : eventos
+        'eventos_list' : eventos
     }
     return render(request, 'Evento/eventos.html', context)
 
