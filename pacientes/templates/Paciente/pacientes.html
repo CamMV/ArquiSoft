@@ -31,9 +31,11 @@
 
                         {% for paciente in paciente_list %}
                         <tr>
+                            <td>
                             <a href="{% url 'pacienteDetail' paciente.id %}">
-                                <td>{{ paciente.nombre }}</td>
+                                {{ paciente.nombre }}
                             </a>
+                            </td>
                         </tr>
                         {% endfor %}
 
