@@ -43,8 +43,6 @@ INSTALLED_APPS = [
 
     
     'pacientes',
-    'imagenes',
-    'diagnosticos',
     'resultados',
     'eventos.apps.EventosConfig',
 
