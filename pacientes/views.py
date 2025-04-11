@@ -16,8 +16,10 @@ def pacienteList(request):
 
 def paciente_detail (request, paciente_id):
     paciente = getPaciente(paciente_id)
+    eventos = paciente.evento_set.all()
     context = {
-        'paciente': paciente
+        'paciente': paciente,
+        'eventos': eventos
     }
     return render(request, 'Paciente/pacienteDetail.html', context)
 

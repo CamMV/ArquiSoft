@@ -6,5 +6,39 @@
 <p><strong>Nombre:</strong> {{ paciente.nombre }}</p>
 <p><strong>Edad:</strong> {{ paciente.edad }}</p>
 
+<h3>Eventos del paciente</h3>
+
+{% if eventos %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evento in eventos %}
+            <tr>
+                <td>{{ evento.get_tipo_display }}</td>
+                <td>{{ evento.descripcion }}</td>
+                <td>{{ evento.fecha }}</td>
+                <td>
+                    {% if evento.resultado %}
+                        {{ evento.resultado.valor }} - {{ evento.resultado.recomendaciones }}
+                    {% else %}
+                        No disponible
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Este paciente no tiene eventos registrados.</p>
+{% endif %}
+
+<br>
 <a href="{% url 'pacienteList' %}">← Volver a la lista</a>
 {% endblock %}
