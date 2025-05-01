@@ -147,7 +147,7 @@ resources:
 # Diagnosticos instances
 # Intancia A
 - type: compute.v1.instance
-  name: proyect-diagnostico-instance-A
+  name: proyect-diagnostico-instance-a
   properties:
     zone: us-central1-a
     machineType: https://www.googleapis.com/compute/v1/projects/isis2503-talleres-451603/zones/us-central1-a/machineTypes/e2-micro
@@ -177,7 +177,7 @@ resources:
             sudo pip3 install -r requirements.txt
 # Intancia B
 - type: compute.v1.instance
-  name: proyect-diagnostico-instance-B
+  name: proyect-diagnostico-instance-b
   properties:
     zone: us-central1-a
     machineType: https://www.googleapis.com/compute/v1/projects/isis2503-talleres-451603/zones/us-central1-a/machineTypes/e2-micro
@@ -207,7 +207,7 @@ resources:
           sudo pip3 install -r requirements.txt
 # Intancia C
 - type: compute.v1.instance
-  name: proyect-diagnostico-instance-C
+  name: proyect-diagnostico-instance-c
   properties:
     zone: us-central1-a
     machineType: https://www.googleapis.com/compute/v1/projects/isis2503-talleres-451603/zones/us-central1-a/machineTypes/e2-micro
