@@ -18,8 +18,8 @@ services:
       
       - name: diagnosticos
         paths:
-          - /diagnosticos
-          - /diagnosticosValidate/
+          - /diagnosticos/
+          - /crear/
         strip_path: false
     
 upstreams:
