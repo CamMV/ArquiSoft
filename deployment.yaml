@@ -2,34 +2,93 @@
 
 resources:
 # Firewall rules
-- name: proyect-firewall-django
+- name: proyect-services-app
   type: compute.v1.firewall
   properties:
     network: https://www.googleapis.com/compute/v1/projects/isis2503-talleres-451603/global/networks/default
     priority: 1000
     direction: INGRESS
-    sourceRanges: 
-    - 0.0.0.0/0
+    sourceTags:
+    - proyect-circuit-braker
     targetTags:
-    - proyect-django
+    - proyect-services-firewall
     allowed:
     - IPProtocol: TCP
       ports: 
       - 8080
-- name: proyect-firewall-db
+
+- name: proyect-services-appps-web
   type: compute.v1.firewall
   properties:
     network: https://www.googleapis.com/compute/v1/projects/isis2503-talleres-451603/global/networks/default
     priority: 1000
     direction: INGRESS
-    sourceTags: 
-    - proyect-django
+    sourceRanges:
+    - 0.0.0.0/0
+    targetTags:
+    - proyect-services-firewall
+    allowed:
+    - IPProtocol: TCP
+      ports:
+      - 8080
+
+- name: proyect-circuit-braker
+  type: compute.v1.firewall
+  properties:
+    network: https://www.googleapis.com/compute/v1/projects/isis2503-talleres-451603/global/networks/default
+    priority: 1000
+    direction: INGRESS
+    sourceRanges:
+    - 0.0.0.0/0
+    targetTags:
+    - proyect-circuit-braker
+    allowed:
+    - IPProtocol: TCP
+      ports:
+      - 8000
+
+- name: proyect-circuit-braker-admin
+  type: compute.v1.firewall
+  properties:
+    network: https://www.googleapis.com/compute/v1/projects/isis2503-talleres-451603/global/networks/default
+    priority: 1000
+    direction: INGRESS
+    sourceRanges:
+    - 0.0.0.0/0
+    targetTags:
+    - proyect-circuit-braker
+    allowed:
+    - IPProtocol: TCP
+      ports:
+      - 8001
+
+- name: proyect-db
+  type: compute.v1.firewall
+  properties:
+    network: https://www.googleapis.com/compute/v1/projects/isis2503-talleres-451603/global/networks/default
+    priority: 1000
+    direction: INGRESS
+    sourceTags:
+    - proyect-services-firewall
     targetTags:
     - proyect-db
     allowed:
     - IPProtocol: TCP
-      ports: 
+      ports:
       - 5432
+
+# Router y NAT
+- name: proyect-router
+  type: compute.v1.router
+  properties:
+    region: us-central1
+    network: https://www.googleapis.com/compute/v1/projects/isis2503-talleres-451603/global/networks/default
+    nats:
+    - name: proyect-nat
+      natIpAllocateOption: AUTO_ONLY
+      sourceSubnetworkIpRangesToNat: ALL_SUBNETWORKS_ALL_IP_RANGES
+
+
 
 # Database instance
 - type: compute.v1.instance
