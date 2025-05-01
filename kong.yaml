@@ -18,8 +18,8 @@ services:
       
       - name: diagnosticos
         paths:
-          #- /diagnosticos
-          #- /diagnosticosValidate/
+          - /diagnosticos
+          - /diagnosticosValidate/
         strip_path: false
     
 upstreams:
@@ -32,16 +32,16 @@ upstreams:
       - target: 10.128.0.63:8080
         weight: 100
     healthchecks:
-      threshold: 0
+      threshold: 0.66
       active:
         http_path: /health/
-        timeout: 0
+        timeout: 5
         healthy:
-          successes: 0
-          interval: 0
+          successes: 2
+          interval: 5
         unhealthy:
-          tcp_failures: 0
-          interval: 0
+          tcp_failures: 2
+          interval: 5
 
   - name: proyect_upstream
     targets:
