@@ -23,7 +23,7 @@ services:
         strip_path: false
     
 upstreams:
-  - name: alarms_upstream
+  - name: diagnosticos_upstream
     targets:
       - target: 10.128.0.61:8080
         weight: 100
@@ -43,7 +43,7 @@ upstreams:
     #      tcp_failures: 0
     #      interval: 0
 
-  - name: monitoring_upstream
+  - name: proyect_upstream
     targets:
       - target: 10.128.0.69:8080
         weight: 100
