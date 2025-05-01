@@ -1,9 +1,9 @@
 # resultados/models.py
 from django.db import models
-from dignosticos.models import Diagnostico
+from eventos.models import Evento
 
 class Resultado(models.Model):
-    diagnostico = models.OneToOneField(Diagnostico, on_delete=models.CASCADE, related_name='resultado')
+    evento = models.OneToOneField(Evento, on_delete=models.CASCADE, related_name='resultado')
     valor = models.IntegerField(default=0)
     recomendaciones = models.CharField(max_length=250)
     fecha_generacion = models.DateTimeField(auto_now_add=True)
