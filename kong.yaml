@@ -1,0 +1,50 @@
+_format_version: "2.1"
+
+services:
+  - host: proyect_upstream
+    name: proyect_service
+    protocol: http
+    routes:
+      
+      - name: proyect
+        paths:
+          - /
+        strip_path: false
+
+  - host: diagnosticos_upstream
+    name: diagnosticos_service
+    protocol: http
+    routes:
+      
+      - name: diagnosticos
+        paths:
+          #- /diagnosticos
+          #- /diagnosticosValidate/
+        strip_path: false
+    
+upstreams:
+  - name: diagnosticos_upstream
+    targets:
+      - target: 10.128.0.61:8080
+        weight: 100
+      - target: 10.128.0.62:8080
+        weight: 100
+      - target: 10.128.0.63:8080
+        weight: 100
+    healthchecks:
+      threshold: 0
+      active:
+        http_path: /health/
+        timeout: 0
+        healthy:
+          successes: 0
+          interval: 0
+        unhealthy:
+          tcp_failures: 0
+          interval: 0
+
+  - name: proyect_upstream
+    targets:
+      - target: 10.128.0.69:8080
+        weight: 100
+
