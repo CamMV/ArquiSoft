@@ -171,8 +171,6 @@ resources:
             #!/bin/bash
             sudo apt-get update
             sudo apt-get install -y python3-pip
-            sudo mkdir /labs
-            cd /labs
             sudo git clone https://github.com/CamMV/ArquiSoft.git
             cd ArquiSoft
             sudo git checkout Disponibilidad
@@ -203,8 +201,6 @@ resources:
           #!/bin/bash
           sudo apt-get update
           sudo apt-get install -y python3-pip
-          sudo mkdir /labs
-          cd /labs
           sudo git clone https://github.com/CamMV/ArquiSoft.git
           cd ArquiSoft
           sudo git checkout Disponibilidad
@@ -235,8 +231,6 @@ resources:
           #!/bin/bash
           sudo apt-get update
           sudo apt-get install -y python3-pip
-          sudo mkdir /labs
-          cd /labs
           sudo git clone https://github.com/CamMV/ArquiSoft.git
           cd ArquiSoft
           sudo git checkout Disponibilidad
@@ -268,8 +262,6 @@ resources:
           #!/bin/bash
           sudo apt-get update
           sudo apt-get install -y python3-pip
-          sudo mkdir /labs
-          cd /labs
           sudo git clone https://github.com/CamMV/ArquiSoft.git
           cd ArquiSoft
           sudo git checkout Disponibilidad
