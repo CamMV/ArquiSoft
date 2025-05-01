@@ -31,17 +31,17 @@ upstreams:
         weight: 100
       - target: 10.128.0.63:8080
         weight: 100
-    #healthchecks:
-    #  threshold: 0
-    #  active:
-    #    http_path: /health/
-    #    timeout: 0
-    #    healthy:
-    #      successes: 0
-    #      interval: 0
-    #    unhealthy:
-    #      tcp_failures: 0
-    #      interval: 0
+    healthchecks:
+      threshold: 0
+      active:
+        http_path: /health/
+        timeout: 0
+        healthy:
+          successes: 0
+          interval: 0
+        unhealthy:
+          tcp_failures: 0
+          interval: 0
 
   - name: proyect_upstream
     targets:
