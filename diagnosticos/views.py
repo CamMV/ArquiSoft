@@ -34,4 +34,4 @@ def diagnostico_create(request):
     context = {
         'form': form
     }
-    return render(request, 'diagnosticos/diagnosticoCreate.html', context)
+    return render(request, 'Diagnostico/diagnosticoCreate.html', context)
