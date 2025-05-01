@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import DiagnosticoForm
 from django.contrib import messages
 from .logic.diagnosticosLogic import getDiagnosticos
+from django.core.mail import send_mail
 
 # Vista para listar todos los diagnósticos
 def diagnosticoList(request):
