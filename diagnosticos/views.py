@@ -34,10 +34,8 @@ def diagnosticoInfo(request, diagnostico_id):
         diagnostico = getDiagnostico(diagnostico_id)
         if diagnostico is None:
             return JsonResponse({"error": "Diagnostico no encontrado"}, status=404)
-        context = {
-            'diagnostico': diagnostico
-        }
-        return JsonResponse({"mensaje": "Diagnostico encontrado", "diagnostico": context}, status=200)
+        data = diagnostico.to_dict()
+        return JsonResponse({"mensaje": "Diagnostico encontrado", "diagnostico": data}, status=200)
     return JsonResponse({"error": "Metodo no permitido"}, status=405)
 
 def diagnosticoEmail(request):
