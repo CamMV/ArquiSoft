@@ -3,6 +3,8 @@ from .forms import DiagnosticoForm
 from django.contrib import messages
 from .logic.diagnosticosLogic import getDiagnosticos, getDiagnostico, createDiagnostico
 from django.http import JsonResponse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.core.mail import send_mail
 
 # Vista para listar todos los diagnósticos
@@ -18,12 +20,14 @@ def diagnostico_create(request):
     if request.method == 'POST':
         form = DiagnosticoForm(request.POST)
         if form.is_valid():
-            createDiagnostico(form)
-            messages.success(request, 'Disponibilidad del diagnostico 99.9%')
-            return redirect('diagnosticoList')
+            diagnostico = form.save(commit=False)
+            createDiagnostico(diagnostico)
+            messages.add_message(request, messages.SUCCESS, 'Diagnóstico creado con éxito')
+            return HttpResponseRedirect(reverse('diagnosticoCreate'))
+        else:
+            print(form.errors)
     else:
         form = DiagnosticoForm()
-    
     context = {
         'form': form
     }
