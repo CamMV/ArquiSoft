@@ -34,7 +34,12 @@ def diagnosticoInfo(request, diagnostico_id):
         diagnostico = getDiagnostico(diagnostico_id)
         if diagnostico is None:
             return JsonResponse({"error": "Diagnostico no encontrado"}, status=404)
-        data = diagnostico.to_dict()
+        data = {
+            "id": diagnostico.id,
+            "resultado": diagnostico.resultado.id,
+            "diagnostico": diagnostico.diagnostico,
+            "fecha_diagnostico": diagnostico.fecha_diagnostico.strftime("%Y-%m-%d %H:%M:%S")
+            }
         return JsonResponse({"mensaje": "Diagnostico encontrado", "diagnostico": data}, status=200)
     return JsonResponse({"error": "Metodo no permitido"}, status=405)
 
