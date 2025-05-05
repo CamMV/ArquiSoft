@@ -37,11 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 
-
-    
-
-    
     'pacientes',
     'resultados',
     'eventos.apps.EventosConfig',
@@ -145,3 +142,26 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'johan5murciav@gmail.com'  
 EMAIL_HOST_PASSWORD = 'irjh plia dzbj yqao' 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# Auth0 BackEnd
+
+LOGIN_URL = '/login/auth0'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'https://dev-urytz4eeb6bslk42.us.auth0.com/v2/logout?returnTo=http%3A%2F%2F10.128.0.60:8080'
+
+SOCIAL_AUTH_TRAILING_SLASH = False
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-urytz4eeb6bslk42.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = 'rDkYCDP0tLay3QVw64pQuqDJ8wRPaETT'
+SOCIAL_AUTH_AUTH0_SECRET = 'n6-ZE6aNSpoCjo0EBbGngVRfTUvCVPc2-7kvfers2P34rtf7r-xrzaqrAfrfrq1g'
+
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email',
+    'role',
+]
+
+AUTHENTICATION_BACKENDS = {
+    'proyecto.auth0backend.Auth0',
+    'django.contrib.auth.backends.ModelBackend',
+}

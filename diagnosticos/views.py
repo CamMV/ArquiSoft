@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.mail import send_mail
+from proyecto.auth0backend import getRole
 
 # Vista para listar todos los diagnósticos
 def diagnosticoList(request):
