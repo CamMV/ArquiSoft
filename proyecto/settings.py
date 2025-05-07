@@ -147,12 +147,13 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 LOGIN_URL = '/login/auth0'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = 'https://dev-urytz4eeb6bslk42.us.auth0.com/v2/logout?returnTo=http%3A%2F%2F10.128.0.60:8080'
+# TODO IP publica en la parte final de la URL Cambiarla en Auth0
+LOGOUT_REDIRECT_URL = 'https://dev-urytz4eeb6bslk42.us.auth0.com/v2/logout?returnTo=http%3A%2F%2F34.42.171.228:8080'
 
 SOCIAL_AUTH_TRAILING_SLASH = False
 SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-urytz4eeb6bslk42.us.auth0.com'
-SOCIAL_AUTH_AUTH0_KEY = 'rDkYCDP0tLay3QVw64pQuqDJ8wRPaETT'
-SOCIAL_AUTH_AUTH0_SECRET = 'n6-ZE6aNSpoCjo0EBbGngVRfTUvCVPc2-7kvfers2P34rtf7r-xrzaqrAfrfrq1g'
+SOCIAL_AUTH_AUTH0_KEY = 'r6ZYXOhosHAofqUpKp58UHbi7eiFtjRgp'
+SOCIAL_AUTH_AUTH0_SECRET = 'ppocZf1fSZBhdQ1spnANIUgs9428lwCRuFrunq14Y-eGzjJdKbm2ofEuSJw5ED75'
 
 SOCIAL_AUTH_AUTH0_SCOPE = [
     'openid',
