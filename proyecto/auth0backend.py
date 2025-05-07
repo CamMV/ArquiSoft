@@ -12,7 +12,7 @@ class Auth0(BaseOAuth2):
     def authorization_url(self):
         return "https://" + self.setting('DOMAIN') + "/authorize"
     
-    def acces_token_url(self):
+    def access_token_url(self):
         return "https://"+ self.setting('DOMAIN') + "/oauth/token"
     
     def get_user_id(self, details, response):
@@ -20,7 +20,7 @@ class Auth0(BaseOAuth2):
     
     def get_user_details(self, response):
         url = "https://" + self.setting('DOMAIN') + "/userinfo"
-        headers = {'authorization': 'Bearer' + response['access_token']}
+        headers = {'authorization':'Bearer' + response['access_token']}
         resp = requests.get(url, headers=headers)
         user_info = resp.json()
         return {
@@ -35,7 +35,7 @@ def getRole(request):
     auth0user = user.social_auth.filter(provider='auth0')[0]
     accesToken = auth0user.extra_data['access_token']
     url = "https://dev-urytz4eeb6bslk42.us.auth0.com/userinfo" 
-    headers = {'authorization': 'Bearer ' + accesToken}
+    headers = {'authorization':'Bearer ' + accesToken}
     resp = requests.get(url, headers=headers)
     user_info = resp.json()
     role = user_info['dev-urytz4eeb6bslk42.us.auth0.com/role']
