@@ -152,7 +152,7 @@ LOGOUT_REDIRECT_URL = 'https://dev-urytz4eeb6bslk42.us.auth0.com/v2/logout?retur
 
 SOCIAL_AUTH_TRAILING_SLASH = False
 SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-urytz4eeb6bslk42.us.auth0.com'
-SOCIAL_AUTH_AUTH0_KEY = 'r6ZYXOhosHAofqUpKp58UHbi7eiFtjRgp'
+SOCIAL_AUTH_AUTH0_KEY = '6ZYXOhosHAofqUpKp58UHbi7eiFtjRgp'
 SOCIAL_AUTH_AUTH0_SECRET = 'ppocZf1fSZBhdQ1spnANIUgs9428lwCRuFrunq14Y-eGzjJdKbm2ofEuSJw5ED75'
 
 SOCIAL_AUTH_AUTH0_SCOPE = [
