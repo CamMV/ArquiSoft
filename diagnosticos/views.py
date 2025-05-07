@@ -74,7 +74,7 @@ def diagnostico_update(request, diagnostico_id):
 
     user_role = getRole(request)
 
-    if user_role != "EditorDiagnostico":
+    if user_role != "Administrador":
         diagnostico = getDiagnostico(diagnostico_id)
         nuevo_diagnostico = request.POST.get("diagnostico")
 
