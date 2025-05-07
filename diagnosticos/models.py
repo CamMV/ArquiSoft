@@ -8,4 +8,13 @@ class Diagnostico(models.Model):
 
     def __str__(self):
         return f"Diagnóstico: {self.diagnostico}, Fecha: {self.fecha_diagnostico}"
+    
+    
+class IntentoModificacionDiagnostico(models.Model):
+    user = models.CharField(max_length=255)  
+    diagnostico = models.ForeignKey(Diagnostico, on_delete=models.CASCADE)
+    intentos = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.user} - {self.diagnostico} - {self.intentos} intentos"
 

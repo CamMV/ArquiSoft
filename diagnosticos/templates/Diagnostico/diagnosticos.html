@@ -2,17 +2,17 @@
 {% block content %}
 
 <div class="content">
-    <div class="">
+    <div>
         <div class="page-header-title">
             <h4 class="page-title">Diagnósticos</h4>
             <div style="text-align:center;">
-                <button type="button" class="btn btn-success waves-effect waves-light"
-                        onClick=" window.location.href='/diagnosticos/diagnosticocreate' " style="text-align:center;">+
-                </button>
+                <a href="{% url 'diagnosticoCreate' %}" class="btn btn-success waves-effect waves-light">+</a>
             </div>
         </div>
     </div>
+
     <br>
+
     <div class="page-content-wrapper">
         <div class="container">
             <div class="panel panel-default">
@@ -35,16 +35,15 @@
                         {% endfor %}
                         </tbody>
                     </table>
+
                     <div style="text-align:center;">
-                        <button type="button" class="btn btn-primary waves-effect waves-light"
-                                onClick=" window.location.href='/' ">
-                            Back
-                        </button>
+                        <a href="/" class="btn btn-primary waves-effect waves-light">Volver</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div style="text-align:left; margin-top: 10px;">
         <form action="{% url 'diagnosticoEmail' %}" method="get">
             <button type="submit" class="btn btn-warning waves-effect waves-light">
@@ -52,6 +51,6 @@
             </button>
         </form>
     </div>
-    
 </div>
+
 {% endblock %}
