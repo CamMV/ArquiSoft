@@ -95,10 +95,3 @@ resources:
         value: |
           #!/bin/bash
           sudo apt-get update
-          sudo apt install python3-pip -y
-          sudo git clone https://github.com/CamMV/ArquiSoft.git
-          sudo git checkout Seguridad
-          sudo git pull
-          sudo pip3 install -r requirements.txt
-          sudo python3 manage.py makemigrations
-          sudo python3 manage.py migrate
