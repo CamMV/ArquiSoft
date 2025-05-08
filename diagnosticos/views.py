@@ -69,37 +69,39 @@ def diagnosticoEmail(request):
 # Vista para actualizar diagnóstico con validación de rol
 @csrf_exempt
 def diagnostico_update(request, diagnostico_id):
-    if request.method != 'POST':
-        return JsonResponse({"error": "Método no permitido"}, status=405)
-
-    user_role = getRole(request)
-
-    if user_role != "Administrador":
-        diagnostico = getDiagnostico(diagnostico_id)
-        nuevo_diagnostico = request.POST.get("diagnostico")
-
-        # Comparar hash
-        hash_actual = hashlib.sha256(diagnostico.diagnostico.encode()).hexdigest()
-        hash_nuevo = hashlib.sha256(nuevo_diagnostico.encode()).hexdigest()
-
-        if hash_actual != hash_nuevo:
-            user_id = str(request.user)
-            intento, created = IntentoModificacionDiagnostico.objects.get_or_create(
-                user=user_id,
-                diagnostico=diagnostico
-            )
-            intento.intentos += 1
-            intento.save()
-
-        return JsonResponse({"error": "No autorizado para modificar diagnósticos"}, status=403)
-
     diagnostico = getDiagnostico(diagnostico_id)
-    nuevo_diagnostico = request.POST.get("diagnostico")
 
-    diagnostico.diagnostico = nuevo_diagnostico
-    diagnostico.save()
+    if request.method == 'GET':
+        # Renderizar el formulario con los datos actuales del diagnóstico
+        context = {'diagnostico': diagnostico}
+        return render(request, 'Diagnostico/diagnosticoUpdate.html', context)
 
-    return JsonResponse({"mensaje": "Diagnóstico modificado exitosamente"}, status=200)
+    elif request.method == 'POST':
+        user_role = getRole(request)
+
+        if user_role != "Administrador":
+            nuevo_diagnostico = request.POST.get("diagnostico")
+            hash_actual = hashlib.sha256(diagnostico.diagnostico.encode()).hexdigest()
+            hash_nuevo = hashlib.sha256(nuevo_diagnostico.encode()).hexdigest()
+
+            if hash_actual != hash_nuevo:
+                user_id = str(request.user)
+                intento, created = IntentoModificacionDiagnostico.objects.get_or_create(
+                    user=user_id,
+                    diagnostico=diagnostico
+                )
+                intento.intentos += 1
+                intento.save()
+
+            return JsonResponse({"error": "No autorizado para modificar diagnósticos"}, status=403)
+
+        nuevo_diagnostico = request.POST.get("diagnostico")
+        diagnostico.diagnostico = nuevo_diagnostico
+        diagnostico.save()
+        return JsonResponse({"mensaje": "Diagnóstico modificado exitosamente"}, status=200)
+
+    return JsonResponse({"error": "Método no permitido"}, status=405)
+
 
 # Vista para ver intentos
 def diagnostico_intentos(request):
