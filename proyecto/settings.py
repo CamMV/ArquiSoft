@@ -148,7 +148,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 LOGIN_URL = '/login/auth0'
 LOGIN_REDIRECT_URL = '/'
 # TODO IP publica en la parte final de la URL Cambiarla en Auth0
-LOGOUT_REDIRECT_URL = 'https://dev-urytz4eeb6bslk42.us.auth0.com/v2/logout?returnTo=http%3A%2F%2F34.42.171.228:8080'
+LOGOUT_REDIRECT_URL = 'https://dev-urytz4eeb6bslk42.us.auth0.com/v2/logout?returnTo=http%3A%2F%2F34.45.145.105:8080'
 
 SOCIAL_AUTH_TRAILING_SLASH = False
 SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-urytz4eeb6bslk42.us.auth0.com'
