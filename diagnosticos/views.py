@@ -102,11 +102,13 @@ def diagnostico_intentos(request):
     intentos = IntentoModificacionDiagnostico.objects.all()
 
     data = []
+    totalIntentos = 0
     for intento in intentos:
         data.append({
             "usuario": intento.user,
             "diagnostico_actual": intento.diagnostico.diagnostico,
             "intentos": intento.intentos
         })
+        totalIntentos += intento.intentos
 
-    return JsonResponse({"intentos": data}, status=200)
+    return JsonResponse({"Total Intentos de cambios sin autorizacion": totalIntentos, "intentos": data}, status=200)
