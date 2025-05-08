@@ -12,11 +12,15 @@ from .models import Diagnostico, IntentoModificacionDiagnostico
 
 # Vista para listar todos los diagnósticos
 def diagnosticoList(request):
-    diagnosticos = getDiagnosticos()
-    context = {
-        'diagnosticos_list': diagnosticos
-    }
-    return render(request, 'Diagnostico/diagnosticos.html', context)
+    user_role = getRole(request)
+    if user_role == "Administrador" or user_role == "Medico" or user_role == "Paciente":
+        diagnosticos = getDiagnosticos()
+        context = {
+            'diagnosticos_list': diagnosticos
+        }
+        return render(request, 'Diagnostico/diagnosticos.html', context)
+    else:
+        return JsonResponse({"error": "No autorizado para ver diagnósticos"}, status=403)
 
 # Vista para crear un diagnóstico
 def diagnostico_create(request):
